@@ -21,7 +21,7 @@ import MediaPlayer
 
     let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
     let applicationSupportsPath = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
-    let controller = self.window!.rootViewController as! FlutterViewController
+    let controller = self.window?.rootViewController as! FlutterViewController
 
     let channel = FlutterMethodChannel(name: "methods", binaryMessenger: controller.binaryMessenger)
     channel.setMethodCallHandler { (call, result) in
@@ -39,10 +39,10 @@ import MediaPlayer
                         application.isIdleTimerDisabled = args
                     }
                 }
-                result(nil as Any?)
+                result(NSNull())
             } else if call.method == "reassertAudioSession" {
                 self.assertAudioSessionCategory()
-                result(nil as Any?)
+                result(NSNull())
             } else {
                 result(FlutterMethodNotImplemented)
             }
